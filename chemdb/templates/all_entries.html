@@ -1,0 +1,16 @@
+<!-- templates/all_entries.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Entries</title>
+</head>
+<body>
+    <h1>All Entries</h1>
+    <ul>
+        {% for entry in entries %}
+            <li>{{ entry.name_mol }} - {{ entry.text_mol }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

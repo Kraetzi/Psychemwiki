@@ -21,5 +21,6 @@ import chemdb.views as views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("/", views.)
+    path("", views.index),
+    path("all_entries", views.all_entries, name="all_entries")
 ]
