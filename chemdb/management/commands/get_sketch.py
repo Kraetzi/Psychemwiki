@@ -4,7 +4,7 @@ import os
 from django.core.files import File
 
 class Command(BaseCommand):
-    help = "Import .mol files to the django db from a directory on machine"
+    help = "Import .sketch files to the django db from a directory on machine"
 
     def add_arguments(self, parser):
         parser.add_argument("directory_path", nargs="+", type=str)
@@ -28,23 +28,21 @@ class Command(BaseCommand):
         print(directory_path)
         listToStrLS = ' '.join(map(str, directory_path))
         for filename in os.listdir(listToStrLS):
-            if filename.endswith(".mol"):
-                mol_file_path = os.path.join(listToStrLS, filename)
+            if filename.endswith(".skc"):
+                sketch_file_path = os.path.join(listToStrLS, filename)
                 
                 # Extracting name and text from the mol file (customize accordingly)
-                name_mol = filename.replace(".mol", "")
-                with open(mol_file_path, 'r') as mol_file:
-                    text_mol = mol_file.read()
+                name_mol = filename.replace(".skc", "")
+                #with open(sketch_file_path, 'r') as sketch_file:
+                    #dotsketch_mol = sketch_file.read()
 
                 # Creating an entry_mol instance and saving to the database
-                entry = Mol(name_mol=name_mol, text_mol=text_mol)
+                entry = Mol(name_mol=name_mol)
                 
-                # Adding the .mol file to the FileField
-                with open(mol_file_path, 'rb') as mol_file:
-                    entry.dotmol_mol.save(filename, File(mol_file))
+                # Adding the .mol file to the ImageField
+                with open(sketch_file_path, 'rb') as sketch_file:
+                    entry.dotsketch_mol.save(filename, File(sketch_file))
 
-                # You can customize this part based on your specific requirements
-                entry.dotsketch_mol = None  # Set the sketch image field accordingly
 
                 entry.save()
 
