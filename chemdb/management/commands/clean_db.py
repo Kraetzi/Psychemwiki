@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
 from chemdb.models import entry_mol
 from django.db.models import Count
+import os
 
 class Command(BaseCommand):
     help = "Clean the chem_db database by deleting duplicates, filling data from duplicates if .sketch or .mol is not duplicate."
