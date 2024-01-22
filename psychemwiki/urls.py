@@ -18,9 +18,9 @@ from django.contrib import admin
 from django.urls import path
 import chemdb.views as views
 
-
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.index),
-    path("all_entries", views.all_entries, name="all_entries")
+    path("all_entries", views.all_entries, name="all_entries"),
+    path('sketch/<str:sketch_name>/', views.display_sketch, name='sketch_view'),
 ]

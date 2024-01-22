@@ -1,4 +1,4 @@
-<!-- templates/all_entries.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +9,7 @@
     <h1>All Entries</h1>
     <ul>
         {% for entry in entries %}
-            <li>{{ entry.name_mol }} - {{ entry.text_mol }} - {{ entry.dotsketch_mol }} - {{ entry.dotmol_mol }}</li>
+            <li>{{ entry.name_mol }} - {{ entry.text_mol }} - <a href="{% url 'sketch_view' sketch_name=entry.name_mol %}">{{ entry.dotsketch_mol }}</a> - {{ entry.dotmol_mol }}</li>
         {% endfor %}
     </ul>
 </body>
