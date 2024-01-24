@@ -23,4 +23,5 @@ urlpatterns = [
     path("", views.index),
     path("all_entries", views.all_entries, name="all_entries"),
     path('sketch/<str:sketch_name>/', views.display_sketch, name='sketch_view'),
+    path('mol/<str:mol_name>/', views.display_mol, name='display_mol')
 ]

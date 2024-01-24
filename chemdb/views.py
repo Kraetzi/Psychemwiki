@@ -30,3 +30,16 @@ def sketch_view(request, sketch_name):
 def display_sketch(request, sketch_name):
     return render(request, 'display_sketch.html', {'sketch_name': sketch_name})
 
+def display_mol(request, mol_name):
+    mol_path = os.path.join(settings.MEDIA_ROOT, 'mol_files', mol_name + '.mol')
+    if os.path.exists(mol_path):
+        with open(mol_path, 'rb') as mol_file:
+            mol_content = mol_file.read()
+            print(mol_content)
+            response = render(request, 'display_mol.html', {'mol_content' : mol_content})
+            return response
+    else:
+        return HttpResponse("Mol not found", status=404)
+    
+
+

@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mol Visualization</title>
+    <script type="text/javascript" src="{% static 'chemdb/ChemDoodleWeb.js' %}"></script>
+</head> 
+<body>
+    <script>
+        let mol_name = '{{ mol_content|escapejs }}';
+        let mol = ChemDoodle.readMOL(mol_name);
+        alertMolecule(mol);
+    </script>
+</body>
+</html>

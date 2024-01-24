@@ -9,7 +9,7 @@
     <h1>All Entries</h1>
     <ul>
         {% for entry in entries %}
-            <li>{{ entry.name_mol }} - {{ entry.text_mol }} - <a href="{% url 'sketch_view' sketch_name=entry.name_mol %}">{{ entry.dotsketch_mol }}</a> - {{ entry.dotmol_mol }}</li>
+            <li>{{ entry.name_mol }} - {{ entry.text_mol }} - <a href="{% url 'sketch_view' sketch_name=entry.name_mol %}">{{ entry.dotsketch_mol }}</a> - <a href="{% url 'display_mol' mol_name=entry.name_mol %}">{{ entry.dotmol_mol }}</a></li>
         {% endfor %}
     </ul>
 </body>
